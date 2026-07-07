@@ -2,7 +2,7 @@
 // CẤU HÌNH LIÊN KẾT GOOGLE SHEET NHẬN DỮ LIỆU RSVP
 // Xem hướng dẫn thiết lập chi tiết tại tệp walkthrough.md
 // =========================================================================
-const GOOGLE_SHEET_WEBAPP_URL = ""; // Dán link Web App của Google Apps Script tại đây
+const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwtdYTo5XEAjbUpgpa3qi-8ubv7bBGGjKarsU0f-d0SbGHNMUYoxGfwmGs7zBumTO9N0w/exec"; // Dán link Web App của Google Apps Script tại đây
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- 1. ENVELOPE OPENING LOGIC ---
