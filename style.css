@@ -472,37 +472,18 @@ body {
     transition: var(--transition-smooth) !important;
 }
 
-/* Khung viền đôi trong (Inner Border) */
+/* Khung viền đôi trong (Inner Border) bo góc song song mượt mà */
 .couple-card::before, .event-box::before, .rsvp-card::before, .gift-card::before {
     content: "" !important;
     position: absolute !important;
-    top: 6px !important;
-    left: 6px !important;
-    right: 6px !important;
-    bottom: 6px !important;
-    border: 1px solid rgba(197, 168, 128, 0.35) !important;
+    top: 8px !important;
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 8px !important;
+    border: 1px solid rgba(197, 168, 128, 0.4) !important;
     pointer-events: none !important;
     z-index: 1 !important;
-    border-radius: inherit !important;
-}
-
-/* Họa tiết 4 góc thắt lơ nhũ vàng cổ điển */
-.couple-card::after, .event-box::after, .rsvp-card::after, .gift-card::after {
-    content: "" !important;
-    position: absolute !important;
-    top: 10px !important;
-    left: 10px !important;
-    right: 10px !important;
-    bottom: 10px !important;
-    border: 1.5px solid var(--color-accent-gold) !important;
-    clip-path: polygon(
-        0 0, 15px 0, 15px 1.5px, 1.5px 1.5px, 1.5px 15px, 0 15px,
-        100% 0, calc(100% - 15px) 0, calc(100% - 15px) 1.5px, calc(100% - 1.5px) 1.5px, calc(100% - 1.5px) 15px, 100% 15px,
-        100% 100%, calc(100% - 15px) 100%, calc(100% - 15px) calc(100% - 1.5px), calc(100% - 1.5px) calc(100% - 1.5px), calc(100% - 1.5px) calc(100% - 15px), 100% calc(100% - 15px),
-        0 100%, 15px 100%, 15px calc(100% - 1.5px), 1.5px calc(100% - 1.5px), 1.5px calc(100% - 15px), 0 calc(100% - 15px)
-    ) !important;
-    pointer-events: none !important;
-    z-index: 1 !important;
+    border-radius: 8px !important; /* Bo góc nhỏ hơn viền ngoài để ôm khít song song */
 }
 
 /* --- BRIDE & GROOM SECTION --- */
