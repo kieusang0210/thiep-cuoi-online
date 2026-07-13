@@ -1418,3 +1418,85 @@ body {
         max-width: 420px;
     }
 }
+
+/* --- PREMIUM UI UPGRADE (VINTAGE ORNAMENTS & BLUR) --- */
+.couple-card, .event-box, .rsvp-card, .gift-card {
+    background: rgba(253, 251, 247, 0.88) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid var(--color-accent-gold) !important;
+    position: relative !important;
+    overflow: visible !important;
+    box-shadow: 0 12px 30px rgba(140, 29, 36, 0.12) !important;
+    transition: var(--transition-smooth) !important;
+}
+
+.couple-card:hover, .event-box:hover, .rsvp-card:hover, .gift-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 40px rgba(140, 29, 36, 0.18) !important;
+}
+
+/* Khung viền đôi (Inner Border) */
+.couple-card::before, .event-box::before, .rsvp-card::before, .gift-card::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 6px !important;
+    left: 6px !important;
+    right: 6px !important;
+    bottom: 6px !important;
+    border: 1px solid rgba(212, 175, 55, 0.35) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    border-radius: inherit !important;
+}
+
+/* Họa tiết 4 góc thắt lơ nhũ vàng */
+.couple-card::after, .event-box::after, .rsvp-card::after, .gift-card::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 10px !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: 10px !important;
+    border: 1.5px solid var(--color-accent-gold) !important;
+    clip-path: polygon(
+        0 0, 15px 0, 15px 1.5px, 1.5px 1.5px, 1.5px 15px, 0 15px,
+        100% 0, calc(100% - 15px) 0, calc(100% - 15px) 1.5px, calc(100% - 1.5px) 1.5px, calc(100% - 1.5px) 15px, 100% 15px,
+        100% 100%, calc(100% - 15px) 100%, calc(100% - 15px) calc(100% - 1.5px), calc(100% - 1.5px) calc(100% - 1.5px), calc(100% - 1.5px) calc(100% - 15px), 100% calc(100% - 15px),
+        0 100%, 15px 100%, 15px calc(100% - 1.5px), 1.5px calc(100% - 1.5px), 1.5px calc(100% - 15px), 0 calc(100% - 15px)
+    ) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* --- FLOATING PETALS (RAIN EFFECT) --- */
+.floating-petal {
+    position: absolute;
+    top: -50px;
+    background-color: rgba(255, 192, 203, 0.65); /* soft pink */
+    border-radius: 15px 2px 15px 15px; /* petal shape */
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    animation: fallDown 12s linear infinite;
+    transform-style: preserve-3d;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes fallDown {
+    0% {
+        transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(110vh) rotateX(360deg) rotateY(180deg) rotateZ(90deg) translateX(80px);
+        opacity: 0;
+    }
+}

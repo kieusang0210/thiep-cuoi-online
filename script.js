@@ -5,9 +5,9 @@
 const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwtdYTo5XEAjbUpgpa3qi-8ubv7bBGGjKarsU0f-d0SbGHNMUYoxGfwmGs7zBumTO9N0w/exec"; // Dán link Web App của Google Apps Script tại đây
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- LẤY TÊN KHÁCH MỜI TỪ URL ---
+    // --- LẤY TÊN KHÁCH MỜI TỪ URL (HỖ TRỢ CẢ '?to=' VÀ '?name=') ---
     const urlParams = new URLSearchParams(window.location.search);
-    const guestNameParam = urlParams.get('to');
+    const guestNameParam = urlParams.get('to') || urlParams.get('name');
     
     if (guestNameParam) {
         const guestHeading = document.getElementById('guest-name-heading');
@@ -77,42 +77,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 3. FLOATING HEARTS BACKGROUND ---
+    // --- 3. FLOATING EFFECTS BACKGROUND (RAIN OF PETALS & FLOATING HEARTS) ---
     const heartContainer = document.getElementById('heart-container');
-    const maxHearts = 35; // Cap maximum hearts on mobile for performance
+    const maxEffects = 40; // Giới hạn số lượng hiệu ứng trên mobile để mượt mà nhất
 
-    function createHeart() {
-        if (!heartContainer || document.querySelectorAll('.floating-heart').length >= maxHearts) return;
+    function createFloatingEffect() {
+        if (!heartContainer) return;
+        
+        const totalEffects = document.querySelectorAll('.floating-heart, .floating-petal').length;
+        if (totalEffects >= maxEffects) return;
 
-        const heart = document.createElement('div');
-        heart.classList.add('floating-heart');
-
-        // Randomize sizes (small, medium, large)
-        const size = Math.random() * 25 + 10; // 10px to 35px
-        heart.style.width = `${size}px`;
-        heart.style.height = `${size}px`;
-
+        const isPetal = Math.random() > 0.4; // 60% cánh hoa đào rơi, 40% trái tim bay
+        const element = document.createElement('div');
+        
+        // Randomize size
+        const size = Math.random() * 15 + 10; // 10px đến 25px
+        element.style.width = `${size}px`;
+        element.style.height = `${size}px`;
+        
         // Randomize horizontal start position
-        heart.style.left = `${Math.random() * 100}%`;
-
-        // Randomize speed/duration of animation
-        const duration = Math.random() * 8 + 7; // 7s to 15s
-        heart.style.animationDuration = `${duration}s`;
-
+        element.style.left = `${Math.random() * 100}%`;
+        
+        // Randomize duration
+        const duration = Math.random() * 6 + 8; // 8s đến 14s
+        element.style.animationDuration = `${duration}s`;
+        
         // Randomize opacity
-        const opacity = Math.random() * 0.4 + 0.3; // 0.3 to 0.7 opacity
-        heart.style.backgroundColor = `rgba(255, 183, 178, ${opacity})`;
+        const opacity = Math.random() * 0.4 + 0.3; // 0.3 đến 0.7
 
-        heartContainer.appendChild(heart);
+        if (isPetal) {
+            // Cánh hoa đào rơi từ trên xuống
+            element.classList.add('floating-petal');
+            element.style.backgroundColor = `rgba(255, 183, 195, ${opacity})`;
+            // Độ xoay ngẫu nhiên lúc bắt đầu rơi
+            const initialRotation = Math.random() * 360;
+            element.style.transform = `rotate(${initialRotation}deg)`;
+        } else {
+            // Trái tim bay từ dưới lên
+            element.classList.add('floating-heart');
+            element.style.backgroundColor = `rgba(255, 183, 178, ${opacity})`;
+        }
 
-        // Remove the heart element after its animation finishes
+        heartContainer.appendChild(element);
+
+        // Tự động xóa phần tử sau khi chạy xong hiệu ứng
         setTimeout(() => {
-            heart.remove();
+            element.remove();
         }, duration * 1000);
     }
 
-    // Spawn hearts periodically
-    setInterval(createHeart, 450);
+    // Tạo hiệu ứng rơi/bay lơ lửng định kỳ
+    setInterval(createFloatingEffect, 350);
 
     // --- 4. COUNTDOWN TIMER ---
     // Target wedding time: 11:00 on July 23, 2026
