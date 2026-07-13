@@ -21,46 +21,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 1. ENVELOPE OPENING LOGIC ---
-    const envelopeWrapper = document.getElementById('envelope-wrapper');
-    const waxSeal = document.getElementById('wax-seal');
+    // --- 1. WELCOME SCREEN OPENING LOGIC ---
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const openWeddingBtn = document.getElementById('open-wedding-btn');
     const weddingContent = document.getElementById('wedding-content');
     const weddingMusic = document.getElementById('wedding-music');
     const musicToggle = document.getElementById('music-toggle');
 
-    if (waxSeal && envelopeWrapper) {
-        waxSeal.addEventListener('click', () => {
-            // Step 1: Open the flap and raise the letter
-            envelopeWrapper.classList.add('open');
-            
-            // Step 2: Play music (if browser policies allow after user interaction)
-            weddingMusic.volume = 0.5;
+    if (openWeddingBtn && welcomeScreen) {
+        openWeddingBtn.addEventListener('click', () => {
+            // Play music
+            weddingMusic.volume = 0.45;
             weddingMusic.play().then(() => {
                 musicToggle.classList.remove('hidden');
             }).catch(err => {
                 console.log("Autoplay prevented or music loading issue:", err);
-                // Still show button so user can click to play manually
                 musicToggle.classList.remove('hidden');
                 musicToggle.classList.add('paused');
             });
 
-            // Step 3: Fade out envelope and show main content
+            // Slide out welcome screen and show main content
+            welcomeScreen.classList.add('fade-out');
+            weddingContent.classList.remove('hidden-content');
+            
             setTimeout(() => {
-                envelopeWrapper.classList.add('fade-out');
-                weddingContent.classList.remove('hidden-content');
-                
-                // Triggers the content fade-in animation
-                setTimeout(() => {
-                    weddingContent.classList.add('visible');
-                    // Initialize scroll animations
-                    initScrollAnimations();
-                }, 100);
-                
-                // Remove envelope element from DOM after transition to avoid performance drag
-                setTimeout(() => {
-                    envelopeWrapper.style.display = 'none';
-                }, 1200);
-            }, 1800);
+                weddingContent.classList.add('visible');
+                initScrollAnimations();
+            }, 100);
+            
+            setTimeout(() => {
+                welcomeScreen.style.display = 'none';
+            }, 1200);
         });
     }
 

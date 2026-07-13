@@ -14,43 +14,41 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Heart animation background container -->
+    <!-- Heart & Petal animation background container -->
     <div id="heart-container"></div>
 
     <!-- Music Player (Autoplay after user click) -->
     <audio id="wedding-music" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        <!-- Backup instrumental wedding song link if needed -->
         <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-forest-walk-229.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
     <button id="music-toggle" class="music-btn hidden">
         <i class="fa-solid fa-music"></i>
     </button>
 
-    <!-- SECTION 1: ENVELOPE SCREEN (SCREEN OVERLAY) -->
-    <div id="envelope-wrapper">
-        <div class="envelope-container">
-            <div class="envelope">
-                <div class="flap"></div>
-                <div class="pocket"></div>
-                <div class="letter">
-                    <div class="letter-content">
-                        <h3>Trân Trọng Kính Mời</h3>
-                        <p class="guest-label" id="guest-name-heading">Quý Khách</p>
-                        <div class="letter-names">Hải Minh<br>&<br>Kiều Trang</div>
-                        <p class="letter-desc">Đến dự buổi tiệc chung vui cùng gia đình chúng tôi</p>
-                        <p class="letter-date">23.07.2026</p>
-                    </div>
-                </div>
-                <div class="wax-seal" id="wax-seal">
-                    <span class="seal-initials">M&T</span>
-                </div>
+    <!-- SECTION 1: WELCOME SCREEN (SCREEN OVERLAY) -->
+    <div id="welcome-screen">
+        <div class="welcome-overlay"></div>
+        <div class="welcome-inner">
+            <p class="welcome-invite">TRÂN TRỌNG KÍNH MỜI</p>
+            <h2 class="welcome-guest-name" id="guest-name-heading">Quý Khách</h2>
+            <p class="welcome-desc">Đến dự buổi tiệc chung vui cùng gia đình chúng tôi</p>
+            
+            <div class="welcome-couple-names">Hải Minh & Kiều Trang</div>
+            
+            <div class="welcome-date-wrapper">
+                <span class="welcome-date-line"></span>
+                <span class="welcome-date">23 . 07 . 2026</span>
+                <span class="welcome-date-line"></span>
             </div>
-            <p class="open-instruction">Chạm vào phong thư để mở thiệp</p>
+
+            <button class="open-wedding-btn" id="open-wedding-btn">
+                <i class="fa-solid fa-envelope-open"></i> Mở Thiệp Cưới
+            </button>
         </div>
     </div>
 
-    <!-- MAIN CONTENT (Initially hidden or shown after envelope opens) -->
+    <!-- MAIN CONTENT (Initially hidden or shown after welcome screen opens) -->
     <div id="wedding-content" class="hidden-content">
         <!-- HEADER / HERO SECTION -->
         <header class="hero-section">
@@ -88,7 +86,7 @@
                         <div class="parents-info">
                             <p>Con ông: <strong>Trần Văn Sử</strong></p>
                             <p>Con bà: <strong>Thái Thị Trâm</strong></p>
-                            <p class="address"><i class="fa-solid fa-location-dot"></i> 40 Hà Mòn 3, xã Đăk Hà, Quảng Ngãi</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"></i> 40 Hà Mòn 3, Đăk Hà, Quảng Ngãi</p>
                         </div>
                     </div>
                 </div>
@@ -104,7 +102,7 @@
                         <div class="parents-info">
                             <p>Con ông: <strong>Nguyễn Biện</strong></p>
                             <p>Con bà: <strong>Võ Thị Hóa</strong></p>
-                            <p class="address"><i class="fa-solid fa-location-dot"></i> Thôn 7, xã Ngok Réo, Quảng Ngãi</p>
+                            <p class="address"><i class="fa-solid fa-location-dot"></i> Thôn 7, Ngok Réo, Quảng Ngãi</p>
                         </div>
                     </div>
                 </div>
@@ -193,7 +191,6 @@
             </div>
         </section>
 
-
         <!-- RSVP FORM (ATTENDANCE CONFIRMATION) -->
         <section class="rsvp-section" id="rsvp-section">
             <div class="section-title-wrapper">
@@ -237,7 +234,7 @@
 
                     <div class="form-group">
                         <label for="guest-wishes"><i class="fa-regular fa-comment-dots"></i> Lời chúc gửi đến Tân lang & Tân nương</label>
-                        <textarea id="guest-wishes" name="wishes" rows="4" placeholder="Nhập lời chúc đong đầy yêu thương của bạn..."></textarea>
+                        <textarea id="guest-wishes" name="wishes" rows="3" placeholder="Nhập lời chúc đong đầy yêu thương của bạn..."></textarea>
                     </div>
 
                     <button type="submit" class="submit-btn"><i class="fa-solid fa-paper-plane"></i> Gửi Xác Nhận</button>
@@ -312,7 +309,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- TOAST NOTIFICATION -->
     <div id="toast" class="toast">Đã sao chép vào bộ nhớ tạm!</div>
