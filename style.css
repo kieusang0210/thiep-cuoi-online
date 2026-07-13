@@ -226,10 +226,17 @@ body {
 
 .welcome-couple-names {
     font-family: var(--font-handwriting);
-    font-size: 3rem;
+    font-size: 2.8rem;
     color: var(--color-accent-gold);
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
     margin-bottom: 15px;
+    line-height: 1.15;
+}
+
+.welcome-and {
+    font-size: 2.2rem;
+    display: inline-block;
+    margin: 2px 0;
 }
 
 .welcome-date-wrapper {
