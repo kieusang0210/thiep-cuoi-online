@@ -5,6 +5,22 @@
 const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwtdYTo5XEAjbUpgpa3qi-8ubv7bBGGjKarsU0f-d0SbGHNMUYoxGfwmGs7zBumTO9N0w/exec"; // Dán link Web App của Google Apps Script tại đây
 
 document.addEventListener('DOMContentLoaded', () => {
+    // --- LẤY TÊN KHÁCH MỜI TỪ URL ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestNameParam = urlParams.get('to');
+    
+    if (guestNameParam) {
+        const guestHeading = document.getElementById('guest-name-heading');
+        if (guestHeading) {
+            guestHeading.innerText = guestNameParam;
+        }
+        // Điền sẵn tên khách vào form RSVP
+        const rsvpNameInput = document.getElementById('guest-name');
+        if (rsvpNameInput) {
+            rsvpNameInput.value = guestNameParam;
+        }
+    }
+
     // --- 1. ENVELOPE OPENING LOGIC ---
     const envelopeWrapper = document.getElementById('envelope-wrapper');
     const waxSeal = document.getElementById('wax-seal');
